@@ -1,0 +1,58 @@
+A demo program to show a range of in, inout, and out parameters in Java/IDL.
+
+To run this demo:
+
+1. Translate the IDL
+
+	idlj -fall ParamTest.idl
+
+
+2. Compile the sources
+
+	javac *.java ParamTest/*.java
+
+
+3. Start the server
+
+	java ParamTestServer
+
+ 
+
+4. In another window ....
+... Having cd'd to the right (same) directory ...
+... Start the client
+
+	java ParamTestClient
+
+
+The Client output will look something like:
+
+	addNums 5 and 6 gives: 11.0
+	String array contains: 
+		0: hi_there
+		1: hi_there
+		2: hi_there
+		3: hi_there
+		4: hi_there
+	Struct contains: hallo 4711
+	Array size: 5
+	op5 done. out: 1234567890
+	string_cube after operation: 
+	Returned element [0][0][0]
+	Returned element [0][0][1]
+	Returned element [0][0][2]
+	Returned element [0][1][0]
+	Returned element [0][1][1]
+	Returned element [0][1][2]
+	---Everything went alright, closing down now---
+
+
+Note that there will be output on the Server window as well.
+
+Study the code and make sure you understand what is going on.
+
+
+
+
+
+

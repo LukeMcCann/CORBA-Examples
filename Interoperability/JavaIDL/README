@@ -1,0 +1,33 @@
+This is the JavaIDL half of the Java/Python interoperability demo.
+
+
+To use this part of the demo:
+
+1. compile the IDL:
+
+	idlj -fall HelloWorld.idl
+
+
+2. Compile server client and stubs and skeletons:
+
+	javac *.java HelloWorld/*.java
+
+
+3. Start server:
+
+	java HelloServer
+
+
+4. Start client in another command tool:
+
+	java HelloClient
+
+
+5.  See the Python/Fnorb demo.  Follow the instructions in the README to
+get that working, then copy the "server.ref" files around to get the Java
+client calling the Python server, and vice-versa.
+
+
+Remember to kill the server when you have finished with it by pressing ctrl-c.
+
+

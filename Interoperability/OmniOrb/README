@@ -1,0 +1,29 @@
+This is the Python half of the Java/Python interoperability demo.  It
+uses the OmniOrb open source python (and C++) orb.
+
+
+To use this part of the demo:
+
+1. Compile the IDL to create the Stub and Skeleton Modules:
+
+	omniidl -bpython HelloWorld.idl
+
+
+2. Start the Server:
+
+	python server.py
+
+
+3. Start client in another command tool:
+
+	python client.py
+
+
+4.  See the JavaIDL demo.  Follow the instructions in the README to
+get that working, then copy the "server.ref" files around to get the Python
+client calling the Java server, and vice-versa.
+
+
+
+Remember to kill the server when you have finished with it by pressing ctrl-c.
+

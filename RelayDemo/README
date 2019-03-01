@@ -1,0 +1,27 @@
+Demo of a "relay" - i.e. a client and server at the same time (using IOR in file trick)
+
+1. compile IDL
+
+	idlj -fall Relay.idl
+
+2. Compile all stubs and skeletons
+
+	javac *.java ClientAndServer/*.java
+
+3. start server
+
+	java RelayServer
+
+4. in another command tool, start the relay (the client/server in the middle)
+
+        java Relay
+
+5. in another command tool, start the client
+
+	java RelayClient
+
+which will produce output similar to the following:
+
+Hello world !!
+
+

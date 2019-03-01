@@ -1,0 +1,90 @@
+Naming Service demo
+
+FIRST - compiling the code
+
+1.  Precompile the IDL:
+
+	idlj -fall count.idl
+
+2.  Compile the Java code:
+
+	javac *.java CounterPortable/*.java
+
+
+
+
+MAIN DEMO using name service running on network
+
+1. Run up the JavaIDL Naming Service server.....
+
+	tnameserv -ORBInitialPort 1050
+
+Initial Naming Context:
+IOR:000000000000002849444c3a6f6d672e6f72672f436f734e616d696e672f4e616d696e67436f6e746578743a312e30000000000100000000000000300001000000000007627261686d7300009509000000000018afabcafe0000000234ade9ec000000080000000000000000
+TransientNameServer: setting port for initial object references to: 1050
+
+NB IGNORE the manual way of running the name server in the background :  it is too easy to forget to kill it .... it stays running after you log out!!
+
+
+2. Run the demo server .....
+
+	java CountPortableServer -ORBInitialPort 1050
+
+Count Object Created
+
+
+3.  Run the client ....
+
+	java CountPortableClient -ORBInitialPort 1050
+
+Initializing the ORB
+Setting sum to 0
+Incrementing
+Avg Ping = 2.682 msecs
+Sum = 1000
+
+
+
+ALTERNATIVE DEMO using IOR in a file trick to locate naming service
+
+1. Run up the JavaIDL Naming Service server.....
+
+	tnameserv -ORBInitialPort 1050
+
+Initial Naming Context:
+IOR:000000000000002849444c3a6f6d672e6f72672f436f734e616d696e672f4e616d696e67436f6e746578743a312e30000000000100000000000000300001000000000007627261686d7300009510000000000018afabcafe0000000234aecf87000000080000000000000000
+TransientNameServer: setting port for initial object references to: 1050
+
+NB IGNORE the manual way of running the name server in the background : it is too easy to forget to kill it .... it stays running after you log out!!
+
+
+2. copy the IOR generated when you ran the above command to a file called "naming.ref"
+   to do that, create a file then use copy and paste from the output on the terminal
+
+
+3. Run the demo server ..... 
+( NB it uses the file naming.ref to find the name server)
+
+	java NamingDemoWithIORInFileServer
+
+Count Object Created
+stringified_ior = IOR:000000000000002849444c3a6f6d672e6f72672f436f734e616d696e672f4e616d696e67436f6e746578743a312e30000000000100000000000000300001000000000007627261686d7300009510000000000018afabcafe0000000234aecf87000000080000000000000000
+
+
+4. Run the demo client ..... 
+( NB it uses the file naming.ref to find the name server)
+
+	java NamingDemoWithIORInFileClient
+
+Initializing the ORB
+stringified_ior = IOR:000000000000002849444c3a6f6d672e6f72672f436f734e616d696e672f4e616d696e67436f6e746578743a312e30000000000100000000000000300001000000000007627261686d7300009510000000000018afabcafe0000000234aecf87000000080000000000000000
+Setting sum to 0
+Incrementing
+Avg Ping = 2.636 msecs
+Sum = 1000
+
+
+NOTE : Since the file naming.ref holds an IOR, it can be the IOR for ANY name server eg the OmniOrb one.
+
+
+
